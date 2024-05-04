@@ -2,6 +2,7 @@ import math
 import random
 import time
 import pygame
+from playsound import playsound
 pygame.init()
 
 WIDTH, HEIGHT = 800, 600
@@ -99,7 +100,6 @@ def end_screen(win, elapsed_time, targets_pressed, clicks):
     win.blit(accuracy_label, (get_middle(accuracy_label), 400))
 
     pygame.display.update()
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT or event.type == pygame.KEYDOWN:
@@ -151,6 +151,7 @@ def main():
                 targets_pressed += 1
         
         if misses >= LIVES:
+            # playsound("myAlarm.mp3") -- Uncomment if you want goofy music when you lose
             end_screen(WIN, elapsed_time, targets_pressed, clicks)
 
         draw(WIN, targets)
